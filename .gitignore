@@ -1,0 +1,6 @@
+.claude/
+.DS_Store
+.preview/
+_*.html
+_*.png
+*.log
