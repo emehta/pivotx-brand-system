@@ -354,21 +354,13 @@ html.js .reveal.in{opacity:1; transform:none}
 .reveal.d1{transition-delay:.07s} .reveal.d2{transition-delay:.14s} .reveal.d3{transition-delay:.21s}
 @media (prefers-reduced-motion:reduce){html.js .reveal{opacity:1; transform:none; transition:none} html{scroll-behavior:auto}}
 
-/* ------------------------------------------------------------- Hero aura (floating gradients) */
-.hero-aura{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none}
-.hero-aura b{position:absolute; display:block; border-radius:50%; mix-blend-mode:screen; will-change:transform; filter:blur(95px)}
-.hero-aura .a1{width:52vw; height:52vw; left:-8%; bottom:-18%; background:radial-gradient(circle at 50% 50%, #2d0bce, transparent 66%); opacity:.5; animation:aura1 30s ease-in-out infinite alternate}
-.hero-aura .a2{width:44vw; height:44vw; left:24%; bottom:-24%; background:radial-gradient(circle at 50% 50%, #804ee6, transparent 64%); opacity:.46; animation:aura2 36s ease-in-out infinite alternate}
-.hero-aura .a3{width:30vw; height:30vw; left:30%; bottom:-6%; background:radial-gradient(circle at 50% 50%, #9a6bf2, transparent 62%); opacity:.34; animation:aura3 26s ease-in-out infinite alternate}
-.hero-aura .a4{width:40vw; height:40vw; right:-8%; bottom:-20%; background:radial-gradient(circle at 50% 50%, #160a78, transparent 66%); opacity:.5; animation:aura4 33s ease-in-out infinite alternate}
-.hero-aura .a5{width:26vw; height:26vw; left:4%; top:6%; background:radial-gradient(circle at 50% 50%, #2d0bce, transparent 68%); opacity:.18; animation:aura5 40s ease-in-out infinite alternate}
-.hero-aura::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, transparent 42%, rgba(12,11,16,.55) 80%, var(--black) 100%)}
-@keyframes aura1{from{transform:translate(0,0) scale(1)} to{transform:translate(9%,-7%) scale(1.14)}}
-@keyframes aura2{from{transform:translate(0,0) scale(1)} to{transform:translate(-11%,-9%) scale(1.1)}}
-@keyframes aura3{from{transform:translate(0,0) scale(.95)} to{transform:translate(14%,-11%) scale(1.18)}}
-@keyframes aura4{from{transform:translate(0,0) scale(1)} to{transform:translate(-9%,-12%) scale(1.12)}}
-@keyframes aura5{from{transform:translate(0,0) scale(.9)} to{transform:translate(10%,10%) scale(1.12)}}
-@media (prefers-reduced-motion:reduce){.hero-aura b{animation:none}}
+/* ------------------------------------------------------------- Hero background (gradient image, gently floating) */
+.hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none}
+.hero-bg::before{content:""; position:absolute; inset:-8%; background:url("../assets/hero-gradient.png") center/cover no-repeat;
+  transform-origin:64% 40%; animation:heroFloat 36s ease-in-out infinite alternate; will-change:transform}
+.hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, transparent 48%, rgba(12,11,16,.4) 84%, var(--black) 100%)}
+@keyframes heroFloat{from{transform:scale(1.05) translate(0,0)} to{transform:scale(1.14) translate(-2.6%,1.6%)}}
+@media (prefers-reduced-motion:reduce){.hero-bg::before{animation:none}}
 
 /* ------------------------------------------------------------- Value section (orange gradient bg) */
 .sec--value{position:relative; overflow:hidden; background:var(--black)}

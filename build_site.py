@@ -83,7 +83,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=13">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=14">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -143,7 +143,7 @@ def footer():
   </div>
 </footer>
 {MODALS_HTML}
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>"""
 
