@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="11" fill="#F34100"/>
-  <g transform="translate(8 8) scale(0.72727)" fill="#FFFFFF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 48 48" width="48" height="48">
+  <style>
+    .m { fill: #111518; }
+    @media (prefers-color-scheme: dark) { .m { fill: #F2F1EC; } }
+  </style>
+  <g class="m">
     <rect x="39.3336" y="35.3969" width="19.2824" height="6.29895" rx="0.334752" transform="rotate(-135 39.3336 35.3969)"/>
     <rect x="13.6348" y="26.2163" width="19.2824" height="6.29895" rx="0.334752" transform="rotate(-135 13.6348 26.2163)"/>
     <rect x="13.6348" y="9.92526" width="7.73749" height="6.29895" rx="0.334752" transform="rotate(-135 13.6348 9.92526)"/>
