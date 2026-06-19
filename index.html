@@ -1260,6 +1260,18 @@
         line-height: 0;
       }
 
+      /* construction / clear-space / minimum-size boxes share the Logo Mark card grid look */
+      #logo-construction-row .diagram-stage,
+      #logo-clearspace .diagram-stage,
+      #logo-minsize .logo-figure {
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, rgba(17, 21, 24, 0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(17, 21, 24, 0.035) 1px, transparent 1px),
+          var(--panel);
+        background-size: 24px 24px;
+      }
+
       .diagram {
         display: block;
         width: 100%;
@@ -1455,7 +1467,8 @@
 
         .ba-anim,
         .ba-logo-svg,
-        .fl-advisors {
+        .fl-advisors,
+        .combo-ring {
           transition: none;
         }
       }
@@ -1542,8 +1555,8 @@
 
       .combo-picker {
         position: absolute;
-        top: clamp(12px, 1.5vw, 18px);
-        left: clamp(12px, 1.5vw, 18px);
+        top: clamp(14px, 1.6vw, 20px);
+        left: clamp(14px, 1.6vw, 20px);
         z-index: 3;
         display: flex;
         flex-direction: column;
@@ -1551,23 +1564,31 @@
       }
 
       .combo-dot {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
-        border: 1.5px solid rgba(255, 255, 255, 0.72);
-        box-shadow: 0 0 0 1px rgba(17, 21, 24, 0.2);
+        border: 0;
         padding: 0;
         cursor: pointer;
-        transition: transform 0.16s ease, box-shadow 0.16s ease;
+        box-shadow: 0 1px 3px rgba(17, 21, 24, 0.32);
+        transition: opacity 0.16s ease;
       }
 
       .combo-dot:hover {
-        transform: scale(1.12);
+        opacity: 0.82;
       }
 
-      .combo-dot.active {
-        transform: scale(1.18);
-        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 0 0 3.5px rgba(17, 21, 24, 0.32);
+      /* single selection ring that travels to the active dot (no per-dot resizing) */
+      .combo-ring {
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2.5px solid var(--fg, #111518);
+        pointer-events: none;
+        transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.55s ease;
       }
 
       .ba-grid-ov {
@@ -1578,6 +1599,11 @@
           linear-gradient(180deg, rgba(132, 132, 132, 0.2) 1px, transparent 1px);
         background-size: 24px 24px;
         pointer-events: none;
+      }
+
+      /* lockups are a flat color, no grid texture */
+      .lockup-hero .ba-grid-ov {
+        display: none;
       }
 
       .ba-logo-svg {
@@ -2150,8 +2176,6 @@
                         <path d="M20 0H0V20" fill="none" stroke="rgba(17,21,24,0.05)" stroke-width="1"/>
                       </pattern>
                     </defs>
-                    <rect width="600" height="360" fill="#f1ece0"/>
-                    <rect width="600" height="360" fill="url(#cgridG)"/>
                     <image href="./assets/pivotx/mark-dark.svg" x="180" y="60" width="240" height="240"/>
                     <g stroke="rgba(243,65,0,0.5)" stroke-width="1" stroke-dasharray="4 4" fill="none">
                       <line x1="180" y1="60" x2="420" y2="300"/>
@@ -2170,9 +2194,9 @@
                       <line x1="143" y1="60" x2="153" y2="60"/>
                       <line x1="143" y1="300" x2="153" y2="300"/>
                     </g>
-                    <rect x="288" y="324" width="24" height="15" fill="#f1ece0"/>
+                    <rect x="288" y="324" width="24" height="15" fill="#fdfcf6"/>
                     <text x="300" y="336" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">1×</text>
-                    <rect x="136" y="172" width="24" height="15" fill="#f1ece0"/>
+                    <rect x="136" y="172" width="24" height="15" fill="#fdfcf6"/>
                     <text x="148" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">1×</text>
                     <text x="420" y="50" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1" fill="rgba(17,21,24,0.5)">1 : 1</text>
                   </svg>
@@ -2190,8 +2214,6 @@
                         <path d="M20 0H0V20" fill="none" stroke="rgba(17,21,24,0.05)" stroke-width="1"/>
                       </pattern>
                     </defs>
-                    <rect width="600" height="360" fill="#f1ece0"/>
-                    <rect width="600" height="360" fill="url(#wgrid)"/>
                     <image href="./assets/pivotx/wordmark-dark.svg" x="70" y="137" width="460" height="86"/>
                     <g stroke="rgba(17,21,24,0.34)" stroke-width="1" stroke-dasharray="1.5 4" stroke-linecap="round" fill="none">
                       <line x1="70" y1="93" x2="70" y2="267"/>
@@ -2210,9 +2232,9 @@
                       <line x1="45" y1="137" x2="55" y2="137"/>
                       <line x1="45" y1="223" x2="55" y2="223"/>
                     </g>
-                    <rect x="282" y="242" width="36" height="15" fill="#f1ece0"/>
+                    <rect x="282" y="242" width="36" height="15" fill="#fdfcf6"/>
                     <text x="300" y="254" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">5.3×</text>
-                    <rect x="38" y="172" width="24" height="15" fill="#f1ece0"/>
+                    <rect x="38" y="172" width="24" height="15" fill="#fdfcf6"/>
                     <text x="50" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">1×</text>
                     <text x="420" y="50" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1" fill="rgba(17,21,24,0.5)">1 : 5.3</text>
                   </svg>
@@ -2266,8 +2288,6 @@
                         <path d="M20 0H0V20" fill="none" stroke="rgba(17,21,24,0.05)" stroke-width="1"/>
                       </pattern>
                     </defs>
-                    <rect width="760" height="300" fill="#f1ece0"/>
-                    <rect width="760" height="300" fill="url(#sgrid)"/>
                     <rect x="133" y="49" width="494" height="201" fill="rgba(45,11,206,0.04)" stroke="rgba(45,11,206,0.7)" stroke-width="1.5" stroke-dasharray="7 5"/>
                     <image href="./assets/pivotx/wordmark-dark.svg" x="200" y="116" width="360" height="67"/>
                     <g stroke="rgba(45,11,206,0.85)" stroke-width="1" fill="none">
@@ -2278,9 +2298,9 @@
                       <line x1="133" y1="144" x2="133" y2="156"/>
                       <line x1="200" y1="144" x2="200" y2="156"/>
                     </g>
-                    <rect x="370" y="74" width="20" height="16" fill="#f1ece0"/>
+                    <rect x="370" y="74" width="20" height="16" fill="#fdfcf6"/>
                     <text x="380" y="86" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">X</text>
-                    <rect x="156" y="142" width="20" height="16" fill="#f1ece0"/>
+                    <rect x="156" y="142" width="20" height="16" fill="#fdfcf6"/>
                     <text x="166" y="154" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">X</text>
                     <text x="627" y="278" text-anchor="end" font-family="ui-monospace, monospace" font-size="11" fill="rgba(17,21,24,0.5)">X = height of the wordmark</text>
                   </svg>
@@ -2298,8 +2318,6 @@
                         <path d="M20 0H0V20" fill="none" stroke="rgba(17,21,24,0.05)" stroke-width="1"/>
                       </pattern>
                     </defs>
-                    <rect width="760" height="300" fill="#f1ece0"/>
-                    <rect width="760" height="300" fill="url(#msgrid)"/>
                     <rect x="240" y="10" width="280" height="280" fill="rgba(45,11,206,0.04)" stroke="rgba(45,11,206,0.7)" stroke-width="1.5" stroke-dasharray="7 5"/>
                     <image href="./assets/pivotx/mark-dark.svg" x="295" y="65" width="170" height="170"/>
                     <g stroke="rgba(45,11,206,0.85)" stroke-width="1" fill="none">
@@ -2310,9 +2328,9 @@
                       <line x1="240" y1="144" x2="240" y2="156"/>
                       <line x1="295" y1="144" x2="295" y2="156"/>
                     </g>
-                    <rect x="370" y="29" width="20" height="16" fill="#f1ece0"/>
+                    <rect x="370" y="29" width="20" height="16" fill="#fdfcf6"/>
                     <text x="380" y="41" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">X</text>
-                    <rect x="257" y="142" width="20" height="16" fill="#f1ece0"/>
+                    <rect x="257" y="142" width="20" height="16" fill="#fdfcf6"/>
                     <text x="267" y="154" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#2d0bce">X</text>
                     <text x="627" y="278" text-anchor="end" font-family="ui-monospace, monospace" font-size="11" fill="rgba(17,21,24,0.5)">X = 1/3 of the logo mark</text>
                   </svg>
@@ -2520,12 +2538,19 @@
           return dot;
         });
 
+        const ring = document.createElement("span");
+        ring.className = "combo-ring";
+        ring.setAttribute("aria-hidden", "true");
+        picker.appendChild(ring);
+
+        const STEP = 29; // dot height (20) + gap (9)
         const state = { tile: tile, dots: dots, index: 0, manual: reduceMotion };
         const apply = (i) => {
           state.index = i;
           tile.style.setProperty("--bg", COMBOS[i].bg);
           tile.style.setProperty("--fg", COMBOS[i].fg);
-          dots.forEach((d, j) => d.classList.toggle("active", j === i));
+          ring.style.transform = "translateY(" + i * STEP + "px)";
+          dots.forEach((d, j) => d.setAttribute("aria-pressed", j === i ? "true" : "false"));
         };
         state.apply = apply;
 
