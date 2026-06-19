@@ -1791,6 +1791,74 @@
           padding: 26px;
         }
       }
+      /* ===== Samples ===== */
+      .samples-system {
+        display: grid;
+        gap: 20px;
+      }
+
+      .sample-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .sample-card {
+        display: grid;
+        gap: 11px;
+      }
+
+      .sample-link {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--panel);
+        box-shadow: 0 16px 44px rgba(17, 21, 24, 0.08);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .sample-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 26px 66px rgba(17, 21, 24, 0.16);
+      }
+
+      .sample-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .sample-cap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+      }
+
+      .sample-cap .sc-var {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--ink);
+      }
+
+      .sample-cap .sc-var .d {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
+
+      @media (max-width: 640px) {
+        .sample-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1801,6 +1869,7 @@
 
       <nav class="tabs" role="tablist" aria-label="Brand system sections">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="logo" id="tab-logo">Logo</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="samples" id="tab-samples">Samples</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="typography" id="tab-typography">Typography</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="color" id="tab-color">Color</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="beforeafter" id="tab-beforeafter">Before / After</button>
@@ -2390,6 +2459,60 @@
                     <img class="misuse-img" src="./assets/pivotx/mark-dark.svg" alt="">
                   </div>
                   <p class="misuse-cap">Don’t place it on low-contrast or busy backgrounds.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="tab-panel" id="samples" role="tabpanel" aria-labelledby="tab-samples" tabindex="0">
+        <div class="board">
+          <aside class="board-index">
+            <ol class="index-list">
+              <li><a class="index-item" href="#sample-company"><span class="index-num">01</span><span class="index-name">Company page</span></a></li>
+              <li><a class="index-item" href="#sample-profile"><span class="index-num">02</span><span class="index-name">Founder profile</span></a></li>
+            </ol>
+          </aside>
+
+          <div class="samples-system">
+            <article class="panel" id="sample-company">
+              <div class="panel-bar">
+                <h3 class="panel-title">LinkedIn Company Page</h3>
+                <span class="code">New graphic, in use</span>
+              </div>
+              <div class="sample-grid">
+                <div class="sample-card">
+                  <a class="sample-link" href="./assets/samples/sample-1.png" target="_blank" rel="noopener">
+                    <img src="./assets/samples/sample-1.png" alt="PivotX Advisors LinkedIn company page with the new mark on a PivotX Blue banner" loading="lazy">
+                  </a>
+                  <div class="sample-cap"><span>Banner + page mark</span><span class="sc-var"><span class="d" style="background:#2D0BCE"></span>PivotX Blue</span></div>
+                </div>
+                <div class="sample-card">
+                  <a class="sample-link" href="./assets/samples/sample-3.png" target="_blank" rel="noopener">
+                    <img src="./assets/samples/sample-3.png" alt="PivotX Advisors LinkedIn company page with the new mark on a PivotX Orange banner" loading="lazy">
+                  </a>
+                  <div class="sample-cap"><span>Banner + page mark</span><span class="sc-var"><span class="d" style="background:#F34100"></span>PivotX Orange</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel" id="sample-profile">
+              <div class="panel-bar">
+                <h3 class="panel-title">LinkedIn Founder Profile</h3>
+                <span class="code">New graphic, in use</span>
+              </div>
+              <div class="sample-grid">
+                <div class="sample-card">
+                  <a class="sample-link" href="./assets/samples/sample-4.png" target="_blank" rel="noopener">
+                    <img src="./assets/samples/sample-4.png" alt="Founder LinkedIn profile with the full PivotX Advisors lockup on a PivotX Blue banner" loading="lazy">
+                  </a>
+                  <div class="sample-cap"><span>Profile banner lockup</span><span class="sc-var"><span class="d" style="background:#2D0BCE"></span>PivotX Blue</span></div>
+                </div>
+                <div class="sample-card">
+                  <a class="sample-link" href="./assets/samples/sample-2.png" target="_blank" rel="noopener">
+                    <img src="./assets/samples/sample-2.png" alt="Founder LinkedIn profile with the full PivotX Advisors lockup on a PivotX Orange banner" loading="lazy">
+                  </a>
+                  <div class="sample-cap"><span>Profile banner lockup</span><span class="sc-var"><span class="d" style="background:#F34100"></span>PivotX Orange</span></div>
                 </div>
               </div>
             </article>
