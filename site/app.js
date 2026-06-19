@@ -47,6 +47,30 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* Modals (Book a Call / Contact) */
+  var modalScrim = document.querySelector("[data-modal-scrim]");
+  function closeModals() {
+    document.querySelectorAll(".modal.open").forEach(function (m) { m.classList.remove("open"); });
+    if (modalScrim) modalScrim.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  function openModal(id) {
+    var m = document.getElementById(id);
+    if (!m) return;
+    setMenu(false);
+    if (modalScrim) modalScrim.classList.add("open");
+    m.classList.add("open");
+    document.body.style.overflow = "hidden";
+    var f = m.querySelector("input, textarea");
+    if (f) setTimeout(function () { f.focus(); }, 60);
+  }
+  document.querySelectorAll("[data-modal]").forEach(function (t) {
+    t.addEventListener("click", function (e) { e.preventDefault(); openModal("modal-" + t.getAttribute("data-modal")); });
+  });
+  document.querySelectorAll("[data-modal-close]").forEach(function (b) { b.addEventListener("click", closeModals); });
+  if (modalScrim) modalScrim.addEventListener("click", closeModals);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModals(); });
+
   /* Offerings tabs */
   var tabBtns = document.querySelectorAll(".tab-btn");
   if (tabBtns.length) {

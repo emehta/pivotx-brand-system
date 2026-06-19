@@ -33,6 +33,39 @@ def esc(s):
 LINKEDIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg>'
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
+MODALS_HTML = """
+<div class="modal-scrim" data-modal-scrim></div>
+<div class="modal" id="modal-book" role="dialog" aria-modal="true" aria-label="Book a discovery call">
+  <div class="modal-card">
+    <button class="modal-x" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="modal-eyebrow">Free Discovery Session</span>
+    <h3 class="modal-title">Book a Discovery Call</h3>
+    <form class="modal-form" data-demo>
+      <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="b-email">Email ID (Work ID)</label><input id="b-email" type="email" placeholder="you@company.com" required></div>
+      <div class="field"><label for="b-mobile">Mobile Number</label><input id="b-mobile" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <button class="btn btn-primary btn-lg" type="submit">Book My Session</button>
+      <p data-formnote class="modal-note">Thanks &mdash; this is a design preview, so the form isn't wired up yet.</p>
+    </form>
+  </div>
+</div>
+<div class="modal" id="modal-contact" role="dialog" aria-modal="true" aria-label="Contact us">
+  <div class="modal-card">
+    <button class="modal-x" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="modal-eyebrow">Get in Touch</span>
+    <h3 class="modal-title">Contact Us</h3>
+    <form class="modal-form" data-demo>
+      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="c-email">Email ID (Work ID)</label><input id="c-email" type="email" placeholder="you@company.com" required></div>
+      <div class="field"><label for="c-phone">Phone Number</label><input id="c-phone" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <div class="field"><label for="c-subject">Subject</label><input id="c-subject" type="text" placeholder="How can we help?"></div>
+      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" placeholder="Your message"></textarea></div>
+      <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
+      <p data-formnote class="modal-note">Thanks &mdash; this is a design preview, so nothing was actually sent.</p>
+    </form>
+  </div>
+</div>"""
+
 def swirl(uid, seed, vb="0 0 1200 760"):
     parts = vb.split(); w, h = int(parts[2]), int(parts[3])
     return (f'<div class="swirl" aria-hidden="true"><svg viewBox="{vb}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
@@ -50,7 +83,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=12">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=13">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -67,11 +100,10 @@ def nav():
       <a href="case-studies.html">Case Studies</a>
       <a href="data-journeys-aws.html">Partners</a>
       <a href="insights.html">Insights</a>
-      <a href="index.html#contact">Contact</a>
     </nav>
     <div class="nav-cta">
-      <a class="nav-icon" href="{LINKEDIN}" target="_blank" rel="noopener" aria-label="PivotX on LinkedIn">{LINKEDIN_SVG}</a>
-      <a class="btn btn-primary" href="index.html#discovery">Book a Call</a>
+      <button class="btn btn-outline" data-modal="contact">Contact</button>
+      <button class="btn btn-primary" data-modal="book">Book a Call</button>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
@@ -81,7 +113,7 @@ def nav():
   <button class="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <a href="index.html#offerings">Offerings</a><a href="index.html#about">About</a><a href="index.html#method">Methodology</a>
   <a href="case-studies.html">Case Studies</a><a href="data-journeys-aws.html">Partners</a><a href="insights.html">Insights</a>
-  <a href="index.html#contact">Contact</a><a href="index.html#discovery" style="color:var(--orange)">Book a Call &rarr;</a>
+  <a href="#" data-modal="contact">Contact</a><a href="#" data-modal="book" style="color:var(--orange)">Book a Call &rarr;</a>
 </aside>"""
 
 def footer():
@@ -99,7 +131,7 @@ def footer():
       <div class="footer-col"><h5>Explore</h5>
         <a href="index.html#offerings">Offerings</a><a href="index.html#method">Methodology</a><a href="case-studies.html">Case Studies</a><a href="data-journeys-aws.html">Partners</a><a href="insights.html">Insights</a></div>
       <div class="footer-col"><h5>Get in Touch</h5>
-        <a href="mailto:{CONTACT}">{CONTACT}</a><a href="index.html#discovery">Book a Call</a></div>
+        <a href="mailto:{CONTACT}">{CONTACT}</a><a href="#" data-modal="book">Book a Discovery Call</a><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></div>
       <div class="footer-col"><h5>Newsletter</h5>
         <form class="newsletter-form" data-demo><input type="email" placeholder="Email ID (Work ID)" aria-label="Email" required><button class="btn btn-primary" type="submit">Subscribe</button></form>
       </div>
@@ -110,7 +142,8 @@ def footer():
     </div>
   </div>
 </footer>
-<script src="app.js?v=12"></script>
+{MODALS_HTML}
+<script src="app.js?v=13"></script>
 </body>
 </html>"""
 

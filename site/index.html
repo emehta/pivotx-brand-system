@@ -6,7 +6,7 @@
 <title>PivotX : Advisory for Data Monetization</title>
 <meta name="description" content="PivotX drives business growth and AI/GenAI success with proven expertise. Data and AI services that drive change and growth — built on a Data-as-a-Product approach.">
 <link rel="icon" href="../assets/pivotx/mark-dark.svg">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -44,19 +44,20 @@
   <a href="case-studies.html">Case Studies</a>
   <a href="data-journeys-aws.html">Partners</a>
   <a href="insights.html">Insights</a>
-  <a href="#contact">Contact</a>
-  <a href="#discovery" style="color:var(--orange)">Book a Call →</a>
+  <a href="#" data-modal="contact">Contact</a>
+  <a href="#" data-modal="book" style="color:var(--orange)">Book a Call →</a>
 </aside>
 
 <!-- ============================== HERO ============================== -->
 <section class="hero" id="home">
+  <div class="hero-aura" aria-hidden="true"><b class="a1"></b><b class="a2"></b><b class="a3"></b><b class="a4"></b><b class="a5"></b></div>
   <div class="container hero-c">
-    <span class="tag-mono"><span class="dot"></span> #Data&amp;Beyond</span>
+    <span class="tag-mono">#Data&amp;Beyond</span>
     <h1 class="display">Redefining Innovation and Growth<br>Through <span class="o">Data and AI</span></h1>
     <p class="lead">PivotX drives business growth and AI/GenAI success with proven expertise.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary btn-lg" href="#offerings">Find Out How <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-outline btn-lg" href="#discovery">Book a Call</a>
+      <a class="btn btn-primary btn-lg" href="case-studies.html">See Solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="btn btn-outline btn-lg" data-modal="book">Book a Call</button>
     </div>
   </div>
 </section>
@@ -164,11 +165,12 @@
 </section>
 
 <!-- ============================== VALUE PATHS ============================== -->
-<section class="sec sec--ink" style="padding-top:0">
+<section class="sec sec--value">
+  <div class="va-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="head reveal">
       <span class="tick"></span>
-      <h2 class="display">Unlocking Data's Value<br>and AI Adoption</h2>
+      <h2 class="display" style="max-width:none">Unlocking Data's Value and AI Adoption</h2>
     </div>
     <div class="paths reveal d1" style="margin-top:40px">
       <div class="path">
@@ -329,7 +331,7 @@
       </div>
       <div class="footer-col">
         <h5>Get in Touch</h5>
-        <a href="mailto:info@pivotxadvisors.com">info@pivotxadvisors.com</a><a href="#discovery">Book a Call</a>
+        <a href="mailto:info@pivotxadvisors.com">info@pivotxadvisors.com</a><a href="#" data-modal="book">Book a Discovery Call</a><a href="https://www.linkedin.com/company/pivotx-advisors/about/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <div class="footer-col">
         <h5>Newsletter</h5>
@@ -349,6 +351,39 @@
   </div>
 </footer>
 
-<script src="app.js?v=12"></script>
+<!-- ============================== MODALS ============================== -->
+<div class="modal-scrim" data-modal-scrim></div>
+<div class="modal" id="modal-book" role="dialog" aria-modal="true" aria-label="Book a discovery call">
+  <div class="modal-card">
+    <button class="modal-x" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="modal-eyebrow">Free Discovery Session</span>
+    <h3 class="modal-title">Book a Discovery Call</h3>
+    <form class="modal-form" data-demo>
+      <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="b-email">Email ID (Work ID)</label><input id="b-email" type="email" placeholder="you@company.com" required></div>
+      <div class="field"><label for="b-mobile">Mobile Number</label><input id="b-mobile" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <button class="btn btn-primary btn-lg" type="submit">Book My Session</button>
+      <p data-formnote class="modal-note">Thanks — this is a design preview, so the form isn't wired up yet.</p>
+    </form>
+  </div>
+</div>
+<div class="modal" id="modal-contact" role="dialog" aria-modal="true" aria-label="Contact us">
+  <div class="modal-card">
+    <button class="modal-x" data-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="modal-eyebrow">Get in Touch</span>
+    <h3 class="modal-title">Contact Us</h3>
+    <form class="modal-form" data-demo>
+      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="c-email">Email ID (Work ID)</label><input id="c-email" type="email" placeholder="you@company.com" required></div>
+      <div class="field"><label for="c-phone">Phone Number</label><input id="c-phone" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <div class="field"><label for="c-subject">Subject</label><input id="c-subject" type="text" placeholder="How can we help?"></div>
+      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" placeholder="Your message"></textarea></div>
+      <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
+      <p data-formnote class="modal-note">Thanks — this is a design preview, so nothing was actually sent.</p>
+    </form>
+  </div>
+</div>
+
+<script src="app.js?v=13"></script>
 </body>
 </html>
