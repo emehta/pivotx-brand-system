@@ -50,7 +50,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=9">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=11">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -111,7 +111,7 @@ def footer():
     </div>
   </div>
 </footer>
-<script src="app.js?v=9"></script>
+<script src="app.js?v=11"></script>
 </body>
 </html>"""
 
@@ -187,7 +187,7 @@ def build_insight_page(a, idx, arts):
     rel_html = related_cards([r.get("title","") for r in rel], [insight_filename(r["slug"]) for r in rel],
                              [CAT_LABEL.get(r.get("category"), r.get("category","").title()) for r in rel], [r.get("date","") for r in rel])
     meta = f'<span class="ins-cat">{label}</span> · {esc(date)}' + (f' · {esc(read)} read' if read else "")
-    return head(f"{title} — PivotX Advisors", trim(first_text(a), 155)) + nav() + f"""
+    return head(f"{title} — PivotX : Advisory for Data Monetization", trim(first_text(a), 155)) + nav() + f"""
 <section class="article-hero">
   <div class="container">
     <div class="crumbs"><a href="index.html">Home</a> / <a href="insights.html">Insights</a> / <span>{label}</span></div>
@@ -236,7 +236,7 @@ CASE_STUDIES = [
    {"type":"h2","text":"AI Has Opened the Door for Procurement to Lead"},
    {"type":"p","text":"Procurement has long been underserved and forgotten in the digital transformation conversation. But with AI and automation, the function can confidently innovate while aligning with corporate IT aspirations. PivotX's solutions are modular, scalable, and capable of delivering immediate impact without disrupting existing systems. By embracing AI and automation, procurement teams can shake off manual burdens and quickly move to a more agile, data-driven, and resilient future."},
   ]},
- {"file":"case-study-healthcare-chatbot.html","thumb":"thumb--wine","label":"Healthcare · GenAI","date":"14 Jul 2025","read":"3 mins",
+ {"file":"case-study-healthcare-chatbot.html","thumb":"thumb--cobalt","label":"Healthcare · GenAI","date":"14 Jul 2025","read":"3 mins",
   "title":"ChatBot for On Demand Virtual Healthcare Provider",
   "dek":"Our client partners with cancer providers to deliver on-demand, technology-enabled virtual care, enhancing the practice of oncology while transforming the patient's experience.",
   "blocks":[
@@ -282,7 +282,7 @@ def build_case_study(cs):
     others = [c for c in CASE_STUDIES if c["file"] != cs["file"]]
     rel_html = related_cards([c["title"] for c in others], [c["file"] for c in others],
                              [c["label"] for c in others], [c["date"] for c in others])
-    return head(f"{cs['title']} — PivotX Advisors", trim(cs["dek"], 155)) + nav() + f"""
+    return head(f"{cs['title']} — PivotX : Advisory for Data Monetization", trim(cs["dek"], 155)) + nav() + f"""
 <section class="article-hero">
   <div class="container">
     <div class="crumbs"><a href="index.html">Home</a> / <a href="case-studies.html">Case Studies</a> / <span>{esc(cs['label'])}</span></div>
@@ -305,7 +305,7 @@ def build_case_studies_index():
         <div class="cs-thumb {c['thumb']}"><img class="mk" src="../assets/pivotx/mark-white.svg" alt=""><span class="label">{esc(c['label'])}</span></div>
         <div class="cs-body"><span class="date">{esc(c['date'])}</span><h3>{esc(c['title'])}</h3><p>{esc(trim(c['dek'],150))}</p><span class="more">Read</span></div>
       </a>""" for c in CASE_STUDIES)
-    return (head("Case Studies — PivotX Advisors", "Real outcomes from PivotX data and AI engagements across procurement, healthcare, and finance.")
+    return (head("Case Studies — PivotX : Advisory for Data Monetization", "Real outcomes from PivotX data and AI engagements across procurement, healthcare, and finance.")
             + nav() + page_head("", "Case Studies", "")
             + f'\n<section class="sec sec--ink" style="padding-top:36px"><div class="container"><div class="grid-3">{cards}</div></div></section>'
             + footer())
@@ -319,7 +319,7 @@ def build_insights_index(arts):
         <div class="ins-meta"><span class="ins-cat">{CAT_LABEL.get(cat,cat.title())}</span> {esc(a.get('date',''))}</div>
         <h3>{esc(a.get('title',''))}</h3><p>{esc(trim(first_text(a),148))}</p><span class="more">Read</span></a>""")
     loadmore = '<div style="text-align:center;margin-top:38px"><button class="btn btn-outline btn-lg" data-loadmore>Load More</button></div>' if len(arts) > 9 else ''
-    return (head("Insights — PivotX Advisors", "Thinking on data, AI and GenAI from the PivotX Advisors team.")
+    return (head("Insights — PivotX : Advisory for Data Monetization", "Thinking on data, AI and GenAI from the PivotX Advisors team.")
             + nav() + page_head("", "Insights", "")
             + f"""
 <section class="sec sec--ink" style="padding-top:36px"><div class="container">
@@ -350,7 +350,7 @@ def build_aws():
     pillars_html = "\n".join(f'<div class="pillar"><div class="pk">{esc(t)}</div><p>{esc(d)}</p></div>' for t,d in pillars)
     stages_html = "\n".join(f'<li><span class="pn">{i+1:02d}</span><span class="pt"><b style="color:var(--text);font-family:var(--font-cond);text-transform:uppercase;letter-spacing:.08em">{esc(t)}</b> &nbsp; {esc(d)}</span></li>' for i,(t,d) in enumerate(stages))
     cta = f'<div class="hero-cta" style="margin-top:30px"><a class="btn btn-primary btn-lg" href="index.html#discovery">Kickstart Your Journey {ARROW}</a><a class="btn btn-outline btn-lg" href="#stages">See the 5 Stages</a></div>'
-    return (head("Data Journeys with AWS — PivotX Advisors", "The PivotX Data & AI Observability and Optimization Control Tower — your command center for trustworthy, scalable data and AI systems, powered by AWS.")
+    return (head("Data Journeys with AWS — PivotX : Advisory for Data Monetization", "The PivotX Data & AI Observability and Optimization Control Tower — your command center for trustworthy, scalable data and AI systems, powered by AWS.")
             + nav()
             + page_head("Powering Data Journeys with AWS",
                 'Data &amp; AI Observability and<br>Optimization <span class="o">Control Tower</span>',
@@ -433,7 +433,7 @@ def build_privacy():
                    extra='<p class="muted" style="font-family:var(--font-mono);font-size:13px;margin-top:6px">Last Updated: 03, Sep 2024</p>')
     # remove empty lead paragraph
     ph = ph.replace('<p class="lead"></p>', '')
-    return head("Privacy Policy — PivotX Advisors", "PivotX Advisors privacy policy for personal data collected through LinkedIn lead generation forms.") + nav() + ph + PRIVACY_BODY.replace("%CONTACT%", CONTACT) + footer()
+    return head("Privacy Policy — PivotX : Advisory for Data Monetization", "PivotX Advisors privacy policy for personal data collected through LinkedIn lead generation forms.") + nav() + ph + PRIVACY_BODY.replace("%CONTACT%", CONTACT) + footer()
 
 def main():
     arts = json.load(open(INSIGHTS_SRC))["result"]

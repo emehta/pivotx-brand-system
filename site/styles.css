@@ -67,8 +67,8 @@ sup{font-size:.5em; vertical-align:super}
 
 /* ------------------------------------------------------------- Layout */
 .container{width:min(var(--maxw), calc(100% - 2*var(--gutter))); margin-inline:auto; position:relative; z-index:2}
-.sec{position:relative; padding:clamp(94px,10.5vw,164px) 0}
-.sec-sm{position:relative; padding:clamp(54px,7vw,92px) 0}
+.sec{position:relative; padding:clamp(120px,13vw,200px) 0}
+.sec-sm{position:relative; padding:clamp(72px,8.5vw,124px) 0}
 .sec--ink{background:var(--black)}
 .sec--orange{background:var(--orange); color:var(--black)}
 .sec--indigo{background:var(--indigo); color:#fff}
@@ -198,8 +198,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .offer-panel .pnum{font-family:var(--font-cond); font-weight:700; font-size:40px; line-height:1; color:var(--orange)}
 .offer-panel h3{font-family:var(--font-serif); font-size:clamp(25px,2.5vw,33px); margin:8px 0 12px; line-height:1.08}
 .offer-panel>p{color:var(--dim); font-size:16px; max-width:62ch}
-.offer-list{list-style:none; padding:0; margin:24px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hair-2); border:1px solid var(--hair-2); border-radius:12px; overflow:hidden}
-.offer-list li{background:var(--black); padding:16px 18px}
+.offer-list{list-style:none; padding:0; margin:26px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:0 36px; background:none; border:0}
+.offer-list li{background:none; padding:16px 0; border-top:1px solid var(--hair-2)}
 .offer-list .t{font-weight:600; font-size:14.5px}
 .offer-list .d{font-size:13px; color:var(--faint); margin-top:4px}
 .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:22px}
@@ -258,9 +258,9 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .ins-card p{color:var(--faint); font-size:14px; flex:1}
 .ins-card .more{margin-top:auto; font-size:14px; font-weight:600; color:var(--orange)}
 .filter-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px}
-.filter-btn{padding:9px 16px; border-radius:var(--r-btn); border:1px solid var(--hair); color:var(--dim); font-weight:500; font-size:14px; transition:.2s}
-.filter-btn:hover{color:var(--text); border-color:var(--hair-3)}
-.filter-btn.active{background:var(--text); color:var(--black); border-color:var(--text)}
+.filter-btn{padding:9px 16px; border-radius:var(--r-btn); border:0; background:var(--zone); color:var(--dim); font-weight:500; font-size:14px; transition:.2s}
+.filter-btn:hover{color:var(--text); background:var(--zone-2)}
+.filter-btn.active{background:var(--orange); color:#fff}
 .problem-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
 @media (max-width:600px){.problem-grid{grid-template-columns:1fr}}
 
