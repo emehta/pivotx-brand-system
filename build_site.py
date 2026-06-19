@@ -50,7 +50,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=11">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=12">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -71,7 +71,7 @@ def nav():
     </nav>
     <div class="nav-cta">
       <a class="nav-icon" href="{LINKEDIN}" target="_blank" rel="noopener" aria-label="PivotX on LinkedIn">{LINKEDIN_SVG}</a>
-      <a class="btn btn-primary" href="index.html#discovery">Free Discovery Session</a>
+      <a class="btn btn-primary" href="index.html#discovery">Book a Call</a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
@@ -81,7 +81,7 @@ def nav():
   <button class="mobile-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <a href="index.html#offerings">Offerings</a><a href="index.html#about">About</a><a href="index.html#method">Methodology</a>
   <a href="case-studies.html">Case Studies</a><a href="data-journeys-aws.html">Partners</a><a href="insights.html">Insights</a>
-  <a href="index.html#contact">Contact</a><a href="index.html#discovery" style="color:var(--orange)">Free Discovery Session &rarr;</a>
+  <a href="index.html#contact">Contact</a><a href="index.html#discovery" style="color:var(--orange)">Book a Call &rarr;</a>
 </aside>"""
 
 def footer():
@@ -99,19 +99,18 @@ def footer():
       <div class="footer-col"><h5>Explore</h5>
         <a href="index.html#offerings">Offerings</a><a href="index.html#method">Methodology</a><a href="case-studies.html">Case Studies</a><a href="data-journeys-aws.html">Partners</a><a href="insights.html">Insights</a></div>
       <div class="footer-col"><h5>Get in Touch</h5>
-        <a href="mailto:{CONTACT}">{CONTACT}</a><a href="index.html#discovery">Free Discovery Session</a><a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></div>
+        <a href="mailto:{CONTACT}">{CONTACT}</a><a href="index.html#discovery">Book a Call</a></div>
       <div class="footer-col"><h5>Newsletter</h5>
         <form class="newsletter-form" data-demo><input type="email" placeholder="Email ID (Work ID)" aria-label="Email" required><button class="btn btn-primary" type="submit">Subscribe</button></form>
-        <div class="footer-social" style="margin-top:18px"><a href="{LINKEDIN}" target="_blank" rel="noopener" aria-label="LinkedIn">{LINKEDIN_SVG}</a></div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; PivotX Advisors LLC, <span data-year>2026</span></span>
-      <div class="legal"><a href="privacy-policy.html">Privacy Policy</a><a href="mailto:{CONTACT}">{CONTACT}</a></div>
+      <div class="footer-bottom-right"><a href="privacy-policy.html">Privacy Policy</a><a class="fsocial" href="{LINKEDIN}" target="_blank" rel="noopener" aria-label="LinkedIn">{LINKEDIN_SVG}</a></div>
     </div>
   </div>
 </footer>
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>"""
 
@@ -170,7 +169,7 @@ def related_cards(items, hrefs, labels, dates, n=3):
         cards.append(f"""<a class="ins-card" href="{href}">
         <div class="ins-meta"><span class="ins-cat">{esc(lab)}</span> {esc(dt)}</div>
         <h3>{esc(it)}</h3>
-        <span class="more">Read</span>
+        <span class="more">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>""")
     return "\n".join(cards)
 
@@ -303,7 +302,7 @@ def build_case_study(cs):
 def build_case_studies_index():
     cards = "\n".join(f"""<a class="cs-card" href="{c['file']}">
         <div class="cs-thumb {c['thumb']}"><img class="mk" src="../assets/pivotx/mark-white.svg" alt=""><span class="label">{esc(c['label'])}</span></div>
-        <div class="cs-body"><span class="date">{esc(c['date'])}</span><h3>{esc(c['title'])}</h3><p>{esc(trim(c['dek'],150))}</p><span class="more">Read</span></div>
+        <div class="cs-body"><span class="date">{esc(c['date'])}</span><h3>{esc(c['title'])}</h3><p>{esc(trim(c['dek'],150))}</p><span class="more">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
       </a>""" for c in CASE_STUDIES)
     return (head("Case Studies — PivotX : Advisory for Data Monetization", "Real outcomes from PivotX data and AI engagements across procurement, healthcare, and finance.")
             + nav() + page_head("", "Case Studies", "")
@@ -317,7 +316,7 @@ def build_insights_index(arts):
         hidden = ' data-hidden style="display:none"' if i >= 9 else ''
         cards.append(f"""<a class="ins-card" data-cat="{cat}"{hidden} href="{insight_filename(a['slug'])}">
         <div class="ins-meta"><span class="ins-cat">{CAT_LABEL.get(cat,cat.title())}</span> {esc(a.get('date',''))}</div>
-        <h3>{esc(a.get('title',''))}</h3><p>{esc(trim(first_text(a),148))}</p><span class="more">Read</span></a>""")
+        <h3>{esc(a.get('title',''))}</h3><p>{esc(trim(first_text(a),148))}</p><span class="more">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>""")
     loadmore = '<div style="text-align:center;margin-top:38px"><button class="btn btn-outline btn-lg" data-loadmore>Load More</button></div>' if len(arts) > 9 else ''
     return (head("Insights — PivotX : Advisory for Data Monetization", "Thinking on data, AI and GenAI from the PivotX Advisors team.")
             + nav() + page_head("", "Insights", "")
