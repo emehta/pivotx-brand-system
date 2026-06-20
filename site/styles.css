@@ -5,7 +5,9 @@
    ========================================================================= */
 
 /* ----------------------------------------------------------------- Fonts */
-@font-face { font-family:"Instrument Sans";  font-style:normal; font-weight:400 700; font-display:swap; src:url("../fonts/instrument-sans-latin.woff2") format("woff2"); }
+@font-face { font-family:"Instrument Sans";  font-style:normal; font-weight:400; font-display:swap; src:url("../fonts/instrument-sans-400-latin.woff2") format("woff2"); }
+@font-face { font-family:"Instrument Sans";  font-style:normal; font-weight:500; font-display:swap; src:url("../fonts/instrument-sans-500-latin.woff2") format("woff2"); }
+@font-face { font-family:"Instrument Sans";  font-style:normal; font-weight:600; font-display:swap; src:url("../fonts/instrument-sans-600-latin.woff2") format("woff2"); }
 @font-face { font-family:"Instrument Serif"; font-style:normal; font-weight:400;     font-display:swap; src:url("../fonts/instrument-serif-latin.woff2") format("woff2"); }
 @font-face { font-family:"Instrument Serif"; font-style:italic; font-weight:400;     font-display:swap; src:url("../fonts/instrument-serif-italic-latin.woff2") format("woff2"); }
 @font-face { font-family:"Roboto Condensed"; font-style:normal; font-weight:700;     font-display:swap; src:url("../fonts/roboto-condensed-700.woff2") format("woff2"); }
@@ -76,7 +78,7 @@ sup{font-size:.5em; vertical-align:super}
 .sec--cloud{background:var(--cloud); color:var(--black)}
 
 /* ------------------------------------------------------------- Type */
-.display{font-family:var(--font-serif); font-weight:400; line-height:1.0; letter-spacing:-.01em}
+.display{font-family:var(--font-sans); font-weight:600; line-height:1.06; letter-spacing:-.022em}
 h1.display{font-size:clamp(40px,5.6vw,82px)}
 h2.display{font-size:clamp(31px,4.4vw,58px)}
 h3.display{font-size:clamp(24px,2.8vw,36px)}
@@ -86,6 +88,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .sec--orange .muted{color:rgba(12,11,16,.66)} .sec--indigo .muted{color:rgba(255,255,255,.74)} .sec--cloud .muted{color:rgba(12,11,16,.62)}
 .serif{font-family:var(--font-serif)} .mono{font-family:var(--font-mono)}
 .o{color:var(--orange)}
+/* Serif-italic accent inside sans display headings (the elegant Instrument Serif emphasis) */
+.ital{font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:1.05em; letter-spacing:0}
 
 .eyebrow{display:inline-flex; align-items:center; gap:11px; font-family:var(--font-cond); font-weight:700;
   font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint)}
@@ -166,7 +170,7 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
   padding:clamp(96px,12vh,128px) 0 clamp(40px,6vh,72px); overflow:hidden}
 .hero-c{max-width:1140px; margin-inline:auto}
 .tag-mono{display:inline-block; font-family:var(--font-mono); font-size:13px; letter-spacing:.09em; color:var(--dim)}
-.hero h1{font-family:var(--font-serif); font-weight:400; font-size:clamp(40px,5.6vw,82px); line-height:1.06; letter-spacing:-.015em; margin:30px auto 0; max-width:none}
+.hero h1{font-family:var(--font-sans); font-weight:600; font-size:clamp(40px,5.6vw,82px); line-height:1.08; letter-spacing:-.022em; margin:30px auto 0; max-width:none}
 .hero .lead{margin:26px auto 0; max-width:52ch}
 .hero-cta{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:38px}
 
@@ -349,7 +353,7 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 
 .page-head{position:relative; padding:clamp(120px,15vh,178px) 0 clamp(30px,4vw,48px)}
 .page-head .tick{margin-bottom:18px}
-.page-head h1{font-family:var(--font-serif); font-weight:400; font-size:clamp(40px,6vw,78px); line-height:1.0; margin:0 0 16px}
+.page-head h1{font-family:var(--font-sans); font-weight:600; font-size:clamp(40px,6vw,78px); line-height:1.05; letter-spacing:-.022em; margin:0 0 16px}
 .page-head .lead{max-width:58ch}
 
 /* reveal */
