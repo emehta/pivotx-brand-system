@@ -83,7 +83,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=20">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=21">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -143,7 +143,7 @@ def footer():
   </div>
 </footer>
 {MODALS_HTML}
-<script src="app.js?v=20"></script>
+<script src="app.js?v=21"></script>
 </body>
 </html>"""
 
@@ -385,19 +385,19 @@ def build_aws():
     return (head("Data Journeys with AWS — PivotX : Advisory for Data Monetization", "The PivotX Data & AI Observability and Optimization Control Tower — your command center for trustworthy, scalable data and AI systems, powered by AWS.")
             + nav()
             + page_head("Powering Data Journeys with AWS",
-                'Data &amp; AI Observability and<br>Optimization <span class="ital">Control Tower</span>',
+                'Data &amp; AI Observability and<br>Optimization <span class="acc">Control Tower</span>',
                 "Your Command Center for Trustworthy and Scalable Data and AI Systems.", "Aws", 11, cta)
             + f"""
 <section class="sec sec--ink">
   <div class="container">
-    <div class="head reveal"><span class="eyebrow">The Problem</span><h2 class="display">A <span class="ital">Growing Storm</span>: The Data<br>and AI Confidence Crisis</h2>
+    <div class="head reveal"><span class="eyebrow">The Problem</span><h2 class="display">A <span class="acc">Growing Storm</span>: The Data<br>and AI Confidence Crisis</h2>
       <p class="lead" style="margin-top:18px">Imagine this: your organization is scaling rapidly, but the very systems that power your insights — Data and AI — are under strain.</p></div>
     <div class="problem-grid reveal d1" style="margin-top:40px">{pains_html}</div>
   </div>
 </section>
 <section class="sec sec--indigo">
   <div class="container">
-    <div class="head reveal"><span class="eyebrow">The Solution</span><h2 class="display">Meet the PivotX <span class="ital">Control Tower</span></h2>
+    <div class="head reveal"><span class="eyebrow">The Solution</span><h2 class="display">Meet the PivotX <span class="acc">Control Tower</span></h2>
       <p class="lead" style="margin-top:18px">Built on AWS DataZone and AWS SageMaker, paired with GenAI intelligence — so you can SEE, DO, and WIN across the data and AI lifecycle.</p></div>
     <div class="pillars reveal d1" style="margin-top:40px">{pillars_html}</div>
   </div>
@@ -405,7 +405,7 @@ def build_aws():
 <section class="sec sec--ink" id="stages">
   <div class="container">
     <div class="method">
-      <div class="reveal"><span class="eyebrow">The Journey</span><h2 class="display" style="margin:20px 0 16px">Five stages to a fully<br>operational <span class="ital">Control Tower</span></h2>
+      <div class="reveal"><span class="eyebrow">The Journey</span><h2 class="display" style="margin:20px 0 16px">Five stages to a fully<br>operational <span class="acc">Control Tower</span></h2>
         <p class="lead">We meet you where you are — from measuring readiness to running a fully functional Data &amp; AI Control Tower.</p>
         <div class="stage-rail"><span class="stage-pill">Assess</span><span class="stage-pill">Establish</span><span class="stage-pill">Elevate</span><span class="stage-pill">Enrich</span><span class="stage-pill">Accelerate</span></div></div>
       <ul class="principles reveal d1">{stages_html}</ul>
@@ -416,7 +416,7 @@ def build_aws():
   <img class="bigstat-mark" src="../assets/pivotx/mark-dark.svg" alt="" aria-hidden="true">
   <div class="container reveal" style="text-align:center">
     <img class="d2e-badge" src="../assets/logos/aws-d2e.webp" alt="Your AWS D2E (Data Driven Everything) Certified Partner" style="margin:0 auto 8px">
-    <h2 class="display" style="margin:24px auto 14px;max-width:20ch;font-size:clamp(34px,5vw,66px)">PivotX Advisors is AWS D2E <span class="ital">certified</span></h2>
+    <h2 class="display" style="margin:24px auto 14px;max-width:20ch;font-size:clamp(34px,5vw,66px)">PivotX Advisors is AWS D2E <span class="acc">certified</span></h2>
     <p class="sub">D2E is an exclusive invite-only program, with only 32 partners certified as of mid-2024. AWS D2E focuses on helping customers move faster and with greater precision in their data-centric journey.</p>
     <button class="btn btn-primary btn-lg" style="margin-top:28px" data-modal="contact">Contact us today to kickstart your journey {ARROW}</button>
   </div>

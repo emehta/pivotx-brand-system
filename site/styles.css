@@ -88,7 +88,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .sec--orange .muted{color:rgba(12,11,16,.66)} .sec--indigo .muted{color:rgba(255,255,255,.74)} .sec--cloud .muted{color:rgba(12,11,16,.62)}
 .serif{font-family:var(--font-serif)} .mono{font-family:var(--font-mono)}
 .o{color:var(--orange)}
-/* Serif-italic accent inside sans display headings (the elegant Instrument Serif emphasis) */
+/* Serif accent inside sans display headings (the elegant Instrument Serif emphasis) */
+.acc{font-family:var(--font-serif); font-style:normal; font-weight:400; font-size:1.05em; letter-spacing:0}
 .ital{font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:1.05em; letter-spacing:0}
 
 .eyebrow{display:inline-flex; align-items:center; gap:11px; font-family:var(--font-cond); font-weight:700;
@@ -198,9 +199,12 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .tab-btn.active{border-bottom-color:var(--orange)}
 .tab-btn.active .tn{color:var(--orange)}
 .offer-stage{display:grid; margin-top:18px}
-.offer-panel{grid-area:1 / 1; border:0; border-radius:var(--r-xl); padding:clamp(30px,3vw,44px); background:var(--zone);
+.offer-panel{grid-area:1 / 1; position:relative; overflow:hidden; border:0; border-radius:var(--r-xl); padding:clamp(30px,3vw,44px); background:var(--zone);
   opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease}
 .offer-panel.active{opacity:1; visibility:visible; pointer-events:auto}
+.offer-panel > :not(.panel-icon){position:relative; z-index:1}
+.panel-icon{position:absolute; top:50%; right:clamp(26px,4.5vw,64px); transform:translateY(-50%);
+  width:clamp(120px,16vw,190px); height:auto; color:var(--orange); opacity:.26; z-index:0; pointer-events:none}
 .offer-panel .pnum{font-family:var(--font-cond); font-weight:700; font-size:40px; line-height:1; color:var(--orange)}
 .offer-panel h3{font-family:var(--font-serif); font-size:clamp(25px,2.5vw,33px); margin:8px 0 12px; line-height:1.08}
 .offer-panel>p{color:var(--dim); font-size:16px; max-width:62ch}
@@ -208,8 +212,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .offer-list li{background:none; padding:16px 0; border-top:1px solid var(--hair-2)}
 .offer-list .t{font-weight:600; font-size:14.5px}
 .offer-list .d{font-size:13px; color:var(--faint); margin-top:4px}
-.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:22px}
-.chip{font-family:var(--font-mono); font-size:12px; padding:7px 11px; border-radius:6px; border:1px solid var(--hair); color:var(--dim)}
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px}
+.chip{font-family:var(--font-mono); font-size:12.5px; padding:9px 15px; border-radius:8px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:var(--text); letter-spacing:.01em}
 
 /* ------------------------------------------------------------- 70% orange block */
 .bigstat{position:relative; overflow:hidden}
