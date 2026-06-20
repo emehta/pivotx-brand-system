@@ -83,7 +83,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=22">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=23">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -91,7 +91,7 @@ def nav():
   <div class="container nav-inner">
     <a class="brand" href="index.html" aria-label="PivotX Advisors home">
       <img class="mark" src="../assets/pivotx/mark-white.svg" alt="">
-      <img class="word" src="../assets/pivotx/wordmark-white.svg" alt="PivotX Advisors">
+      <span class="wordwrap"><img class="word" src="../assets/pivotx/wordmark-white.svg" alt="PivotX"><span class="advisors">Advisors</span></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html#offerings">Offerings</a>
@@ -122,7 +122,7 @@ def footer():
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="lock"><img class="mark" src="../assets/pivotx/mark-white.svg" alt=""><img class="word" src="../assets/pivotx/wordmark-white.svg" alt="PivotX Advisors"></div>
+        <div class="lock"><img class="mark" src="../assets/pivotx/mark-white.svg" alt=""><span class="wordwrap"><img class="word" src="../assets/pivotx/wordmark-white.svg" alt="PivotX"><span class="advisors">Advisors</span></span></div>
         <div class="cert-row">
           <div class="cert"><img src="../assets/logos/sdo.webp" alt="Supplier Diversity Office (SDO) Certified"></div>
           <div class="cert"><img src="../assets/logos/wbenc.webp" alt="WBENC Certified — Women's Business Enterprise"></div>
@@ -143,7 +143,7 @@ def footer():
   </div>
 </footer>
 {MODALS_HTML}
-<script src="app.js?v=22"></script>
+<script src="app.js?v=23"></script>
 </body>
 </html>"""
 
