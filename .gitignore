@@ -4,3 +4,7 @@
 _*.html
 _*.png
 *.log
+
+# local site-verification scratch
+.shots/
+.logocheck.html

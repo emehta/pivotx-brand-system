@@ -107,7 +107,7 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .swirl::after{content:""; position:absolute; inset:0; background:var(--grain); background-size:170px; opacity:.06; mix-blend-mode:overlay}
 
 /* ------------------------------------------------------------- Buttons (rounded rectangles, not pills) */
-.btn{display:inline-flex; align-items:center; gap:9px; padding:13px 20px; border-radius:var(--r-btn);
+.btn{display:inline-flex; align-items:center; gap:9px; padding:13px 20px; border-radius:0;
   font-family:var(--font-sans); font-weight:600; font-size:15px; line-height:1;
   transition:background .18s, color .18s, border-color .18s; white-space:nowrap}
 .btn svg{width:15px; height:15px}
@@ -135,12 +135,13 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .nav{position:fixed; inset:0 0 auto 0; z-index:60; border-bottom:1px solid transparent; transition:background .3s, border-color .3s}
 .nav.scrolled{background:rgba(12,11,16,.82); backdrop-filter:blur(16px) saturate(150%); border-bottom-color:var(--hair-2)}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px; height:70px}
-.brand{display:flex; align-items:center; gap:9px}
-.brand .mark{height:30px; width:auto}
-.brand .word{height:15px; width:auto; opacity:.95}
+.brand{display:flex; align-items:center; gap:10px}
+.brand .mark{height:26px; width:auto}
+.brand .word{height:19px; width:auto; opacity:.96}
 .nav-links{display:flex; align-items:center; gap:2px}
 .nav-links a{padding:8px 12px; border-radius:7px; font-size:14.5px; font-weight:500; color:var(--dim); transition:color .2s, background .2s}
 .nav-links a:hover{color:var(--text); background:var(--surface)}
+.nav-links a.active{color:var(--text)}
 .nav-cta{display:flex; align-items:center; gap:11px}
 .nav-cta .btn{padding:10px 16px; font-size:14px}
 .nav-icon{width:36px; height:36px; display:grid; place-items:center; border-radius:7px; border:1px solid var(--hair); color:var(--dim); transition:.2s}
@@ -160,8 +161,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .scrim.open{opacity:1; pointer-events:auto}
 
 /* ------------------------------------------------------------- Hero (centered, flat, spacious) */
-.hero{position:relative; min-height:min(90vh,840px); display:grid; place-items:center; text-align:center;
-  padding:clamp(128px,15vh,182px) 0 clamp(60px,9vw,100px); overflow:hidden}
+.hero{position:relative; min-height:100vh; display:grid; place-items:center; text-align:center;
+  padding:clamp(96px,12vh,128px) 0 clamp(40px,6vh,72px); overflow:hidden}
 .hero-c{max-width:1140px; margin-inline:auto}
 .tag-mono{display:inline-block; font-family:var(--font-mono); font-size:13px; letter-spacing:.09em; color:var(--dim)}
 .hero h1{font-family:var(--font-serif); font-weight:400; font-size:clamp(40px,5.6vw,82px); line-height:1.06; letter-spacing:-.015em; margin:30px auto 0; max-width:none}
@@ -182,16 +183,16 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .offer-lead .eyebrow{margin-bottom:0}
 
 /* ------------------------------------------------------------- Offerings (tabs) */
-.offer-tabs{display:grid; grid-template-columns:.82fr 1.18fr; gap:26px; align-items:stretch; margin-top:42px}
-.tablist{display:flex; flex-direction:column; gap:2px}
-.tab-btn{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center; text-align:left;
-  padding:18px 20px; border:0; border-radius:var(--r-btn); background:transparent; transition:background .2s, color .2s}
+.offer-tabs{margin-top:44px}
+.tablist{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-bottom:1px solid var(--hair-2)}
+.tab-btn{display:block; text-align:left; padding:14px 18px 16px; border:0; border-bottom:2px solid transparent;
+  background:transparent; border-radius:0; transition:background .2s, border-color .2s}
 .tab-btn:hover{background:var(--zone)}
-.tab-btn .tn{font-family:var(--font-cond); font-weight:700; font-size:15px; color:var(--faint); transition:color .2s}
-.tab-btn .tt{font-weight:600; font-size:16px; line-height:1.2}
-.tab-btn.active{background:var(--zone-2); box-shadow:inset 3px 0 0 var(--orange)}
+.tab-btn .tn{display:block; font-family:var(--font-cond); font-weight:700; font-size:14px; color:var(--faint); margin-bottom:7px; transition:color .2s}
+.tab-btn .tt{display:block; font-weight:600; font-size:15px; line-height:1.28}
+.tab-btn.active{border-bottom-color:var(--orange)}
 .tab-btn.active .tn{color:var(--orange)}
-.offer-stage{display:grid}
+.offer-stage{display:grid; margin-top:18px}
 .offer-panel{grid-area:1 / 1; border:0; border-radius:var(--r-xl); padding:clamp(30px,3vw,44px); background:var(--zone);
   opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease}
 .offer-panel.active{opacity:1; visibility:visible; pointer-events:auto}
@@ -270,7 +271,9 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 /* ------------------------------------------------------------- AWS / partner */
 .partner{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(30px,5vw,62px); align-items:center}
 .partner-card{position:relative; border-radius:var(--r-xl); border:0; padding:40px; background:rgba(255,255,255,.08); overflow:hidden; text-align:center}
-.partner-card .bignum{font-family:var(--font-serif); font-size:clamp(58px,9vw,108px); line-height:.88; color:#fff; margin-top:22px}
+.partner-card .bignum{font-family:var(--font-serif); font-size:clamp(58px,9vw,110px); line-height:.92; color:#fff; margin-top:28px; display:flex; align-items:baseline; justify-content:center; gap:18px; flex-wrap:wrap}
+.partner-card .bignum-unit{color:rgba(255,255,255,.92)}
+.partner-card .bignum-sub{margin-top:14px; color:rgba(255,255,255,.74); font-size:14.5px}
 .partner-badge{display:inline-flex; align-items:center; gap:11px; padding:10px 16px; border-radius:var(--r-btn); border:1px solid rgba(255,255,255,.3); font-weight:600; color:#fff}
 .partner-badge .b{font-family:var(--font-cond); font-weight:700; letter-spacing:.06em; font-size:20px; color:#fff}
 .awschip{display:inline-flex; align-items:center; background:#fff; border-radius:6px; padding:7px 10px}
@@ -283,7 +286,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .cert-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:24px; align-items:center}
 .cert{display:block; line-height:0; border-radius:8px; overflow:hidden}
 .cert img{height:62px; width:auto; display:block}
-.d2e-badge{display:block; width:100%; max-width:340px; height:auto; border-radius:10px}
+.d2e-plate{display:block; max-width:298px; margin:0 auto; background:#fff; border-radius:8px; padding:11px 15px}
+.d2e-plate img{display:block; width:100%; height:auto}
 
 /* ------------------------------------------------------------- Discovery (spectral block) */
 .discovery{position:relative; border-radius:var(--r-xl); overflow:hidden; background:var(--orange); color:var(--black)}
@@ -292,8 +296,8 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .form{display:grid; gap:13px}
 .field{display:grid; gap:7px}
 .field label{font-family:var(--font-cond); text-transform:uppercase; letter-spacing:.1em; font-size:12px; color:rgba(12,11,16,.64)}
-.field input{width:100%; padding:13px 15px; border-radius:var(--r-field); border:1px solid rgba(12,11,16,.22); background:#fff; color:var(--black); font-family:var(--font-sans); font-size:15px; transition:.2s}
-.field input::placeholder{color:rgba(12,11,16,.42)}
+.field input{width:100%; padding:13px 15px; border-radius:var(--r-field); border:1px solid rgba(12,11,16,.32); background:rgba(12,11,16,.55); color:#fff; font-family:var(--font-sans); font-size:15px; transition:.2s}
+.field input::placeholder{color:rgba(255,255,255,.46)}
 .field input:focus{outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(12,11,16,.12)}
 .form .btn{width:100%; justify-content:center; margin-top:4px; background:var(--black); color:#fff}
 .form .btn:hover{background:#000}
@@ -302,7 +306,7 @@ h3.display{font-size:clamp(24px,2.8vw,36px)}
 .footer{background:var(--black); border-top:1px solid var(--hair-2); padding:clamp(76px,8vw,116px) 0 38px}
 .footer-top{display:grid; grid-template-columns:1.6fr 1fr 1fr 1.3fr; gap:clamp(32px,4vw,56px)}
 .footer-brand .lock{display:flex; align-items:center; gap:9px; margin-bottom:18px}
-.footer-brand .lock .mark{height:30px} .footer-brand .lock .word{height:15px}
+.footer-brand .lock{gap:11px} .footer-brand .lock .mark{height:32px} .footer-brand .lock .word{height:23px}
 .footer-brand p{color:var(--faint); font-size:14px; max-width:32ch}
 .footer-col h5{font-family:var(--font-cond); text-transform:uppercase; letter-spacing:.12em; font-size:12.5px; color:var(--faint); margin-bottom:15px}
 .footer-col a{display:block; padding:6px 0; color:var(--dim); font-size:14.5px; transition:.2s}
@@ -358,7 +362,7 @@ html.js .reveal.in{opacity:1; transform:none}
 .hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none}
 .hero-bg::before{content:""; position:absolute; inset:-8%; background:url("../assets/hero-gradient.png") center/cover no-repeat;
   transform-origin:64% 40%; animation:heroFloat 36s ease-in-out infinite alternate; will-change:transform}
-.hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, transparent 48%, rgba(12,11,16,.4) 84%, var(--black) 100%)}
+.hero-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(to bottom, var(--black) 0%, transparent 18%, transparent 52%, rgba(12,11,16,.7) 82%, var(--black) 100%)}
 @keyframes heroFloat{from{transform:scale(1.05) translate(0,0)} to{transform:scale(1.14) translate(-2.6%,1.6%)}}
 @media (prefers-reduced-motion:reduce){.hero-bg::before{animation:none}}
 
@@ -367,8 +371,9 @@ html.js .reveal.in{opacity:1; transform:none}
 .sec--value .va-bg{position:absolute; inset:0; z-index:0; background:url("../assets/orange-grd-bg.png") center/cover no-repeat}
 .sec--value .va-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(to bottom, var(--black) 0%, rgba(12,11,16,.35) 15%, transparent 36%, transparent 72%, rgba(12,11,16,.5) 100%)}
 .sec--value .container{position:relative; z-index:1}
-.sec--value .path, .sec--value .path-extra{background:rgba(9,8,13,.5); backdrop-filter:blur(10px)}
-.sec--value .path:hover{background:rgba(9,8,13,.66)}
+.sec--value .head{max-width:none}
+.sec--value .path, .sec--value .path-extra{background:rgba(9,8,13,.74); backdrop-filter:blur(10px)}
+.sec--value .path:hover{background:rgba(9,8,13,.84)}
 
 /* ------------------------------------------------------------- Modals (glassy, low roundness) */
 .modal-scrim{position:fixed; inset:0; z-index:90; background:rgba(6,5,10,.6); backdrop-filter:blur(5px); opacity:0; pointer-events:none; transition:opacity .25s}
@@ -393,6 +398,7 @@ html.js .reveal.in{opacity:1; transform:none}
 .modal-form .field input:focus, .modal-form .field textarea:focus{outline:none; border-color:var(--orange)}
 .modal-form .btn{width:100%; justify-content:center; margin-top:6px}
 .modal-note{display:none; color:var(--orange); font-size:13.5px; margin-top:2px}
+#modal-contact .modal-card{width:min(500px,100%)}
 
 /* ------------------------------------------------------------- Responsive */
 @media (max-width:1000px){
@@ -400,7 +406,6 @@ html.js .reveal.in{opacity:1; transform:none}
   .paths{grid-template-columns:repeat(2,1fr)}
   .partner{grid-template-columns:1fr}
   .method{grid-template-columns:1fr; gap:30px}
-  .offer-tabs{grid-template-columns:1fr}
   .hero-inner{grid-template-columns:1fr; min-height:0}
   .hero-visual{aspect-ratio:16/10; max-height:340px; order:2}
 }
@@ -417,6 +422,7 @@ html.js .reveal.in{opacity:1; transform:none}
 }
 @media (max-width:600px){
   .paths,.paths-extra{grid-template-columns:1fr}
+  .tablist{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr; gap:28px}
   .hero-strip{grid-template-columns:1fr}
   .hero-stat + .hero-stat{border-left:0; border-top:1px solid var(--hair-2); padding-left:0}

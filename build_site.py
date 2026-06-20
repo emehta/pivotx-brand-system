@@ -41,9 +41,9 @@ MODALS_HTML = """
     <span class="modal-eyebrow">Free Discovery Session</span>
     <h3 class="modal-title">Book a Discovery Call</h3>
     <form class="modal-form" data-demo>
-      <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name" required></div>
-      <div class="field"><label for="b-email">Email ID (Work ID)</label><input id="b-email" type="email" placeholder="you@company.com" required></div>
-      <div class="field"><label for="b-mobile">Mobile Number</label><input id="b-mobile" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="First and Last Name" required></div>
+      <div class="field"><label for="b-email">Email ID (Work ID)</label><input id="b-email" type="email" placeholder="you@yourcompany.com" required></div>
+      <div class="field"><label for="b-mobile">Mobile Number</label><input id="b-mobile" type="tel" placeholder="Your phone number"></div>
       <button class="btn btn-primary btn-lg" type="submit">Book My Session</button>
       <p data-formnote class="modal-note">Thanks &mdash; this is a design preview, so the form isn't wired up yet.</p>
     </form>
@@ -55,11 +55,11 @@ MODALS_HTML = """
     <span class="modal-eyebrow">Get in Touch</span>
     <h3 class="modal-title">Contact Us</h3>
     <form class="modal-form" data-demo>
-      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
-      <div class="field"><label for="c-email">Email ID (Work ID)</label><input id="c-email" type="email" placeholder="you@company.com" required></div>
-      <div class="field"><label for="c-phone">Phone Number</label><input id="c-phone" type="tel" placeholder="+1 (555) 000-0000"></div>
+      <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="First and Last Name" required></div>
+      <div class="field"><label for="c-email">Email ID (Work ID)</label><input id="c-email" type="email" placeholder="you@yourcompany.com" required></div>
+      <div class="field"><label for="c-phone">Phone Number</label><input id="c-phone" type="tel" placeholder="Your phone number"></div>
       <div class="field"><label for="c-subject">Subject</label><input id="c-subject" type="text" placeholder="How can we help?"></div>
-      <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" placeholder="Your message"></textarea></div>
+      <div class="field full"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" placeholder="Your message"></textarea></div>
       <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
       <p data-formnote class="modal-note">Thanks &mdash; this is a design preview, so nothing was actually sent.</p>
     </form>
@@ -83,7 +83,7 @@ def head(title, desc):
     return (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n'
-            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=14">\n</head>\n<body>')
+            f'<link rel="icon" href="../assets/pivotx/mark-dark.svg">\n<link rel="stylesheet" href="styles.css?v=18">\n</head>\n<body>')
 
 def nav():
     return f"""
@@ -143,7 +143,7 @@ def footer():
   </div>
 </footer>
 {MODALS_HTML}
-<script src="app.js?v=14"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>"""
 
@@ -381,7 +381,7 @@ def build_aws():
     pains_html = "\n".join(f'<div class="card"><div class="kicker">0{i+1}</div><h3 style="font-family:var(--font-serif);font-size:clamp(20px,4.5vw,25px);margin:10px 0 8px">{esc(t)}</h3><p class="muted">{esc(d)}</p></div>' for i,(t,d) in enumerate(pains))
     pillars_html = "\n".join(f'<div class="pillar"><div class="pk">{esc(t)}</div><p>{esc(d)}</p></div>' for t,d in pillars)
     stages_html = "\n".join(f'<li><span class="pn">{i+1:02d}</span><span class="pt"><b style="color:var(--text);font-family:var(--font-cond);text-transform:uppercase;letter-spacing:.08em">{esc(t)}</b> &nbsp; {esc(d)}</span></li>' for i,(t,d) in enumerate(stages))
-    cta = f'<div class="hero-cta" style="margin-top:30px"><a class="btn btn-primary btn-lg" href="index.html#discovery">Kickstart Your Journey {ARROW}</a><a class="btn btn-outline btn-lg" href="#stages">See the 5 Stages</a></div>'
+    cta = f'<div class="hero-cta" style="margin-top:30px"><button class="btn btn-primary btn-lg" data-modal="book">Kickstart Your Journey {ARROW}</button><a class="btn btn-outline btn-lg" href="#stages">See the 5 Stages</a></div>'
     return (head("Data Journeys with AWS — PivotX : Advisory for Data Monetization", "The PivotX Data & AI Observability and Optimization Control Tower — your command center for trustworthy, scalable data and AI systems, powered by AWS.")
             + nav()
             + page_head("Powering Data Journeys with AWS",
@@ -418,7 +418,7 @@ def build_aws():
     <img class="d2e-badge" src="../assets/logos/aws-d2e.webp" alt="Your AWS D2E (Data Driven Everything) Certified Partner" style="margin:0 auto 8px">
     <h2 class="display" style="margin:24px auto 14px;max-width:20ch;font-size:clamp(34px,5vw,66px)">PivotX Advisors is AWS D2E certified</h2>
     <p class="sub">D2E is an exclusive invite-only program, with only 32 partners certified as of mid-2024. AWS D2E focuses on helping customers move faster and with greater precision in their data-centric journey.</p>
-    <a class="btn btn-primary btn-lg" style="margin-top:28px" href="index.html#discovery">Contact us today to kickstart your journey {ARROW}</a>
+    <button class="btn btn-primary btn-lg" style="margin-top:28px" data-modal="contact">Contact us today to kickstart your journey {ARROW}</button>
   </div>
 </section>""" + footer())
 
@@ -467,12 +467,24 @@ def build_privacy():
     ph = ph.replace('<p class="lead"></p>', '')
     return head("Privacy Policy — PivotX : Advisory for Data Monetization", "PivotX Advisors privacy policy for personal data collected through LinkedIn lead generation forms.") + nav() + ph + PRIVACY_BODY.replace("%CONTACT%", CONTACT) + footer()
 
+def load_insights():
+    # prefer a committed insights.json; fall back to the (ephemeral) harvest temp file
+    local = os.path.join(os.path.dirname(os.path.abspath(__file__)), "insights.json")
+    for p in (local, INSIGHTS_SRC):
+        try:
+            d = json.load(open(p))
+            return d["result"] if isinstance(d, dict) and "result" in d else d
+        except (FileNotFoundError, ValueError):
+            continue
+    print("NOTE: no insights source found — insight pages + insights index left as-is on disk; regenerating the rest.")
+    return []
+
 def main():
-    arts = json.load(open(INSIGHTS_SRC))["result"]
+    arts = load_insights()
     for i, a in enumerate(arts): write(insight_filename(a["slug"]), build_insight_page(a, i, arts))
     for cs in CASE_STUDIES: write(cs["file"], build_case_study(cs))
     write("case-studies.html", build_case_studies_index())
-    write("insights.html", build_insights_index(arts))
+    if arts: write("insights.html", build_insights_index(arts))
     write("data-journeys-aws.html", build_aws())
     write("privacy-policy.html", build_privacy())
     print("done:", len(arts)+len(CASE_STUDIES)+4, "pages")
