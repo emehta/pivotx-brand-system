@@ -103,18 +103,66 @@
         padding: 34px 0 64px;
       }
 
-      .tabs {
+      /* The tabs and, at the right, a link to PivotX's own website, in one sticky strip. The link sits outside the
+         tablist, which may hold only tabs. */
+      .tabs-bar {
         position: sticky;
         top: 0;
         z-index: 5;
         display: flex;
-        gap: 6px;
+        align-items: center;
+        gap: 8px;
         padding: 8px;
         margin-bottom: 22px;
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: rgba(244, 244, 245, 0.9);
         backdrop-filter: blur(16px);
+      }
+
+      .tabs {
+        display: flex;
+        gap: 6px;
+        min-width: 0;
+      }
+
+      .site-link {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        gap: 9px;
+        min-height: 42px;
+        margin-left: auto;
+        padding: 0 16px 0 18px;
+        border-radius: 8px;
+        background: var(--ink);
+        color: #ffffff;
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        box-shadow: 0 12px 30px rgba(17, 21, 24, 0.12);
+        transition: background-color 0.18s ease;
+      }
+
+      .site-link:hover {
+        background: var(--orange);
+      }
+
+      .site-link:focus-visible {
+        outline: 2px solid var(--orange);
+        outline-offset: 2px;
+      }
+
+      .site-link svg {
+        width: 14px;
+        height: 14px;
+        flex: none;
+      }
+
+      .site-link .short {
+        display: none;
       }
 
       .tab-button {
@@ -1701,8 +1749,30 @@
           text-align: left;
         }
 
+        /* The tabs scroll beside the link: they fade out at its edge rather than being cut, and the last one can
+           scroll clear of the fade. */
         .tabs {
+          flex: 1 1 auto;
           overflow-x: auto;
+          -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+        }
+
+        .tabs::after {
+          content: "";
+          flex: 0 0 20px;
+        }
+
+        .site-link {
+          padding: 0 13px 0 14px;
+        }
+
+        .site-link .long {
+          display: none;
+        }
+
+        .site-link .short {
+          display: inline;
         }
 
         .tab-button {
@@ -1867,6 +1937,7 @@
         <h1 class="masthead-title">PivotX Advisors<span class="title-div" aria-hidden="true"></span><span class="sans">Brand System Update</span></h1>
       </header>
 
+      <div class="tabs-bar">
       <nav class="tabs" role="tablist" aria-label="Brand system sections">
         <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="logo" id="tab-logo">Logo</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="samples" id="tab-samples">Samples</button>
@@ -1874,6 +1945,8 @@
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="color" id="tab-color">Color</button>
         <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="beforeafter" id="tab-beforeafter">Before / After</button>
       </nav>
+      <a class="site-link" href="https://www.pivotxadvisors.com/" target="_blank" rel="noopener"><span class="long">View original website</span><span class="short">Original site</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+      </div>
 
       <section class="tab-panel" id="typography" role="tabpanel" aria-labelledby="tab-typography" tabindex="0">
         <div class="board">
